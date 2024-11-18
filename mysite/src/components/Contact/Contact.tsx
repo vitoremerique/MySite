@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
       <p>Feel free to reach out to me using any of the methods below:</p>
       <div className="contact-methods">
         <div className="contact-item">
-          <img src="/icons/email.png" alt="Email" />
+          <img src="icons/email.png" alt="Email" />
           <a href="mailto:emerique.dev@gmail.com">emerique.dev@gmail.com</a>
         </div>
         <div className="contact-item">
