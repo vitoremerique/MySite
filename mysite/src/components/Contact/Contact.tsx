@@ -8,24 +8,22 @@ const Contact: React.FC = () => {
       <p>Feel free to reach out to me using any of the methods below:</p>
       <div className="contact-methods">
         <div className="contact-item">
-          <img src="icons/email.png" alt="Email" />
+          <img src={`${process.env.PUBLIC_URL}/icons/email.png`} alt="Email" />
           <a href="mailto:emerique.dev@gmail.com">emerique.dev@gmail.com</a>
         </div>
         <div className="contact-item">
-          <img src="/icons/linkedin.png" alt="LinkedIn" />
+          <img src={`${process.env.PUBLIC_URL}/icons/linkedin.png`} alt="LinkedIn" />
           <a href="https://www.linkedin.com/in/vitoremerique/" target="_blank" rel="noreferrer">
             vitoremerique
           </a>
         </div>
         <div className="contact-item">
-          <img src="/icons/github.png" alt="GitHub" />
+          <img src={`${process.env.PUBLIC_URL}/icons/github.png`} alt="GitHub" />
           <a href="https://github.com/vitoremerique" target="_blank" rel="noreferrer">
             VitorEmerique
           </a>
         </div>
-        
       </div>
-      
     </section>
   );
 };
