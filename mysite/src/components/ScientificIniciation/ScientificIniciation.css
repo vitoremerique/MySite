@@ -1,0 +1,64 @@
+.scientific-initiation {
+  padding: 2rem;
+  background-color: #333; /* Fundo da seção */
+  text-align: center;
+}
+
+.scientific-initiation h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  background-color: #505356; /* Fundo dos cartões */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-content {
+  flex: 1;
+  padding: 1rem;
+  color: white;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card-title {
+  background-color: #FFD666; /* Barra amarela */
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.card-title p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black; /* Cor do texto na barra amarela */
+}
