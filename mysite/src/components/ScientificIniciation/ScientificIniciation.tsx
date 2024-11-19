@@ -40,7 +40,7 @@ const ScientificInitiation: React.FC = () => {
       description: 'He was responsible for implementing a computational resource monitoring system for the Tapajós high-performance cluster.',
     },
     {
-      title: 'Gestão de Infraestrutura para Aprendizado de Máquina',
+      title: 'Infrastructure Management for Machine Learning',
       description: 'He managed the infrastructure for machine learning, focusing on security, performance, and collaboration with the development team.',
     }
   ];
