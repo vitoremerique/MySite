@@ -1,18 +1,65 @@
+/* Estilo Responsivo para a Seção */
 .about-me {
   background: #313336;
   color: white;
   padding: 2rem;
   text-align: center;
   height: auto;
-  width: 50%;
+  width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
+  left: 0; /* Garante que a seção começa do lado esquerdo */
+  right: 0; /* Garante que a seção termina no lado direito */
+  margin: 0; /* Remove margens que podem causar problemas */
   font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra leve para destaque */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Garante que nada ultrapasse os limites */
 }
 
+/* Título */
 .about-me h2 {
+  font-size: 2rem; /* Ajusta o tamanho do título */
+  margin-bottom: 1rem;
+  color: #f2f2f2;
+}
+
+/* Texto */
+.about-me p {
+  font-size: 1.25rem; /* Reduz um pouco o tamanho do texto */
+  line-height: 1.8; /* Melhora a legibilidade */
   margin-bottom: 1rem;
 }
 
-.about-me p {
-  font-size: 1.5rem;
-  line-height: 1.6;
+/* Responsividade */
+@media (max-width: 768px) {
+  .about-me {
+    padding: 1.5rem; /* Reduz o padding em telas médias */
+    font-size: 0.9rem; /* Ajusta o tamanho do texto base */
+    width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
+  }
+
+  .about-me h2 {
+    font-size: 1.8rem; /* Reduz o tamanho do título */
+  }
+
+  .about-me p {
+    font-size: 1.1rem; /* Ajusta o texto em telas menores */
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me {
+    padding: 1rem; /* Reduz ainda mais o padding para telas pequenas */
+    font-size: 0.8rem; /* Fonte base menor em dispositivos muito pequenos */
+    width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
+  }
+
+  .about-me h2 {
+    font-size: 1.5rem; /* Título menor em telas pequenas */
+  }
+
+  .about-me p {
+    font-size: 1rem; /* Ajusta o texto para ficar proporcional */
+    line-height: 1.4; /* Compacta o espaçamento entre linhas */
+  }
 }

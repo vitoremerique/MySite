@@ -8,6 +8,8 @@
   background: #505356;
   color: white;
   font-size: xx-large;
+  /* Adicionando um mínimo de altura para evitar que o texto fique espremido */
+  min-height: 250px;
 }
 
 .intro-content {
@@ -29,6 +31,62 @@
   object-fit: cover;
 }
 
-.highlight{
+.highlight {
   color: #FB3159;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .introduction {
+    padding: 1rem;
+    font-size: 1.5rem; /* Ajuste para um tamanho de fonte adequado */
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .intro-content,
+  .intro-photo {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .introduction {
+    flex-direction: column; /* Empilha os itens verticalmente */
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem; /* Ajuste para telas pequenas como o iPhone SE */
+    min-height: 300px; /* Garante que a seção tenha altura suficiente */
+  }
+
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .intro-content,
+  .intro-photo {
+    margin: 0.5rem;
+  }
+}
+
+/* Ajustes específicos para iPhone SE e dispositivos com tamanhos similares */
+@media (max-width: 375px) {
+  .introduction {
+    font-size: 1.2rem; /* Ajuste extra para telas muito pequenas */
+    padding: 0.5rem;
+  }
+
+  .profile-photo {
+    width: 120px; /* A imagem de perfil fica menor */
+    height: 120px;
+  }
+
+  .intro-content,
+  .intro-photo {
+    margin: 0.25rem;
+  }
 }

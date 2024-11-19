@@ -6,10 +6,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100vh; /* Garante que a altura ocupe toda a tela */
+  min-height: 100vh; /* Troca de height para min-height */
   display: flex; /* Flexbox para estrutura responsiva */
   flex-direction: column; /* Alinha os itens na vertical */
   justify-content: flex-start; /* Alinha o conteúdo no topo */
+  align-items: center; /* Centraliza horizontalmente */
+  overflow-x: hidden; /* Remove a rolagem horizontal */
 }
 
 /* Reset */
@@ -23,19 +25,60 @@
 section {
   padding: 2rem 1rem;
   margin: 0 auto;
-  max-width: 100%; /* Define uma largura máxima */
+  max-width: 1200px; /* Define uma largura máxima */
   width: 100%; /* Preenche a largura da tela */
   text-align: center;
   height: auto; /* Deixa a altura ajustável conforme o conteúdo */
+}
+
+/* Imagens Responsivas */
+img {
+  max-width: 100%;
+  height: auto; /* Mantém a proporção da imagem */
+  display: block; /* Remove espaçamento extra em imagens inline */
+  margin: 0 auto; /* Centraliza imagens */
+}
+
+/* Botões */
+button {
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #777;
 }
 
 /* Responsividade Global */
 @media (max-width: 768px) {
   .app {
     flex-direction: column; /* Em telas pequenas, o layout fica em coluna */
+    padding: 1rem; /* Adiciona espaçamento interno */
   }
 
   section {
     padding: 1rem; /* Reduz o padding em telas menores */
+  }
+
+  button {
+    width: 100%; /* Botões ocupam toda a largura em telas pequenas */
+    padding: 1rem; /* Ajusta o tamanho do botão */
+  }
+}
+
+/* Ajustes Extras para Telas Muito Pequenas */
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte em telas muito pequenas */
+  }
+
+  section {
+    padding: 0.5rem; /* Ajusta ainda mais o padding */
   }
 }

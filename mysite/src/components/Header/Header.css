@@ -1,9 +1,8 @@
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  
   background: linear-gradient(180deg, #313336, #2b2d31);
   padding: 1rem 2rem;
   color: white;
@@ -11,14 +10,21 @@
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid #ffd666;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  width: 100vw; /* Garantir que o header ocupe 100% da largura da tela */
+  left: 0; /* Para garantir que o header comece no lado esquerdo */
+  right: 0; /* Para garantir que o header termine no lado direito */
 }
 
+/* Logo */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #f9dc5c;
+  cursor: pointer;
 }
 
+/* Navegação */
 .nav {
   display: flex;
   gap: 1.5rem;
@@ -27,9 +33,62 @@
 .nav a {
   color: white;
   text-decoration: none;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
 .nav a:hover {
   color: #f9dc5c;
+}
+
+/* Ícone do menu */
+.menu-icon {
+  display: none; /* Oculto em telas maiores */
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Estilo do menu responsivo quando ativado */
+.nav.mobile-active {
+  display: flex; /* Exibe o menu no modo mobile */
+  flex-direction: column;
+  gap: 1rem;
+  background: #2b2d31;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+  z-index: 999;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* Oculta o menu por padrão em dispositivos menores */
+  }
+
+  .menu-icon {
+    display: block; /* Mostra o ícone do menu */
+  }
+
+  .nav.mobile-active {
+    display: flex; /* Mostra o menu ao ativar a classe */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem 1rem; /* Ajusta o espaçamento para telas pequenas */
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Reduz o tamanho da logo */
+  }
+
+  .nav a {
+    font-size: 0.9rem; /* Ajusta o tamanho dos links */
+  }
 }

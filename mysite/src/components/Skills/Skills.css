@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1.5rem;
+  justify-items: center;
 }
 
 .skill {
@@ -23,9 +24,56 @@
   transform: translateY(0);
 }
 
-
 .skill img {
-  width: auto;
-  height: 60px;
+  width: 60px; /* Ajuste da largura da imagem */
+  height: auto; /* Remove altura fixa, a imagem se ajusta conforme a largura */
   margin-bottom: 0.5rem;
+  object-fit: cover; /* Garante que a imagem não seja distorcida */
+}
+
+/* Ajuste para dispositivos maiores */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .skill img {
+    width: 50px; /* Ajusta o tamanho da imagem para tablets */
+  }
+
+  .skills {
+    padding: 1.5rem;
+  }
+}
+
+/* Ajuste para dispositivos pequenos */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill img {
+    width: 40px; /* Imagens menores para smartphones */
+  }
+
+  .skills {
+    padding: 1rem;
+  }
+}
+
+/* Ajuste extra para dispositivos muito pequenos */
+@media (max-width: 375px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .skill img {
+    width: 35px; /* Imagens ainda menores para telas muito pequenas */
+  }
+
+  .skills {
+    padding: 0.5rem;
+  }
 }

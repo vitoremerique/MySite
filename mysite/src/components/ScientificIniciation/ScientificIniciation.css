@@ -14,6 +14,7 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  flex-wrap: wrap; /* Permite que os cartões se ajustem em várias linhas */
 }
 
 .card {
@@ -26,6 +27,9 @@
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem;
+  min-width: 150px; /* Garante que os cartões não encolham abaixo de um tamanho mínimo */
+  flex-shrink: 0; /* Impede que o cartão encolha */
 }
 
 .card:hover {
@@ -37,23 +41,29 @@
   flex: 1;
   padding: 1rem;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Garante que o conteúdo se distribua bem */
 }
 
 .card-content h3 {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  word-wrap: break-word; /* Quebra de linha automática, para evitar que o texto ultrapasse os limites */
 }
 
 .card-content p {
   font-size: 0.9rem;
   line-height: 1.5;
+  word-wrap: break-word;
 }
 
 .card-title {
   background-color: #FFD666; /* Barra amarela */
   text-align: center;
   padding: 0.5rem 0;
+  flex-shrink: 0; /* Impede que a faixa amarela encolha */
 }
 
 .card-title p {
@@ -61,4 +71,121 @@
   font-size: 1rem;
   font-weight: bold;
   color: black; /* Cor do texto na barra amarela */
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .scientific-initiation h2 {
+    font-size: 1.8rem; /* Ajuste para telas intermediárias */
+  }
+
+  .cards {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 180px;
+    height: auto; /* A altura agora vai se ajustar automaticamente ao conteúdo */
+    min-width: 140px;
+  }
+
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+  }
+
+  .card-title p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 150px; /* Cartões menores para telas médias */
+    height: auto;
+    min-width: 120px;
+  }
+
+  .card-content h3 {
+    font-size: 1rem;
+  }
+
+  .card-content p {
+    font-size: 0.8rem;
+  }
+
+  .card-title p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scientific-initiation h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cards {
+    gap: 0.5rem; /* Menor espaçamento entre os cartões */
+    justify-content: space-around; /* Distribui os cartões de forma mais equitativa */
+  }
+
+  .card {
+    width: 120px;
+    height: auto; /* Cartões ajustados para telas pequenas */
+    min-width: 100px;
+    margin: 0.5rem;
+  }
+
+  .card-content h3 {
+    font-size: 0.9rem;
+  }
+
+  .card-content p {
+    font-size: 0.7rem;
+  }
+
+  .card-title p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Ajuste extra para iPhone SE (375px) */
+@media (max-width: 375px) {
+  .scientific-initiation h2 {
+    font-size: 1.3rem;
+  }
+
+  .cards {
+    gap: 0.25rem;
+    justify-content: space-evenly;
+  }
+
+  .card {
+    width: 100px; /* Cartões ainda menores para iPhone SE */
+    height: auto;
+    min-width: 100px;
+    margin: 0.25rem;
+  }
+
+  .card-content h3 {
+    font-size: 0.9rem;
+  }
+
+  .card-content p {
+    font-size: 0.7rem;
+  }
+
+  .card-title p {
+    font-size: 0.8rem;
+  }
 }
