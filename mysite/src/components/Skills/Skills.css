@@ -2,78 +2,69 @@
   padding: 2rem;
   background: #313336;
   text-align: center;
-  height: auto;
+  overflow: hidden; /* impede barra de rolagem horizontal */
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
+.skills h2 {
+  margin-bottom: 2rem;
+  color: white;
 }
 
-.skill {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(50%);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* Área que contém o carrossel */
+.parallax-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-.skill.animate {
+/* Faixa que desliza */
+.parallax-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  will-change: transform;
+  padding: 1rem 0;
+}
+
+/* Cada item do carrossel */
+.parallax-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  color: white;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.parallax-item:hover {
+  transform: scale(1.1);
   opacity: 1;
-  transform: translateY(0);
 }
 
-.skill img {
-  width: 60px; /* Ajuste da largura da imagem */
-  height: auto; /* Remove altura fixa, a imagem se ajusta conforme a largura */
+.parallax-item img {
+  width: 60px;
+  height: auto;
   margin-bottom: 0.5rem;
-  object-fit: cover; /* Garante que a imagem não seja distorcida */
 }
 
-/* Ajuste para dispositivos maiores */
-@media (max-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-
-  .skill img {
-    width: 50px; /* Ajusta o tamanho da imagem para tablets */
-  }
-
-  .skills {
-    padding: 1.5rem;
-  }
-}
-
-/* Ajuste para dispositivos pequenos */
+/* Responsivo */
 @media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
+  .parallax-item {
+    min-width: 90px;
   }
 
-  .skill img {
-    width: 40px; /* Imagens menores para smartphones */
-  }
-
-  .skills {
-    padding: 1rem;
+  .parallax-item img {
+    width: 40px;
   }
 }
 
-/* Ajuste extra para dispositivos muito pequenos */
 @media (max-width: 375px) {
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0.8rem;
+  .parallax-item {
+    min-width: 70px;
   }
 
-  .skill img {
-    width: 35px; /* Imagens ainda menores para telas muito pequenas */
-  }
-
-  .skills {
-    padding: 0.5rem;
+  .parallax-item img {
+    width: 32px;
   }
 }

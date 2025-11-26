@@ -1,48 +1,61 @@
-import React, { useEffect, useRef } from 'react';
-import './Skills.css';
+import React, { useEffect, useRef } from "react";
+import "./Skills.css";
 
 const Skills: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          } else {
-            entry.target.classList.remove('animate');
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+    let animationFrame: number;
+    let position = 0;
 
-    const elements = sectionRef.current?.querySelectorAll('.skill');
-    elements?.forEach((el) => observer.observe(el));
+    const speed = 0.5; // ajuste a velocidade do efeito parallax
 
-    return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+    const animate = () => {
+      if (trackRef.current) {
+        position -= speed;
+        trackRef.current.style.transform = `translateX(${position}px)`;
+
+        // reinicia quando sai da tela (efeito looping)
+        if (Math.abs(position) > trackRef.current.scrollWidth / 2) {
+          position = 0;
+        }
+      }
+      animationFrame = requestAnimationFrame(animate);
     };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  const skills = ['Java', 'Spring Boot', 'HTML', 'CSS', 'React', 'Docker','Typescript'];
-  
+  const skills = [
+    "Java",
+    "Spring Boot",
+    "HTML",
+    "CSS",
+    "React",
+    "Docker",
+    "Typescript",
+  ];
+
+  // duplicar itens para efeito infinito
+  const loopedSkills = [...skills, ...skills];
 
   return (
-    <section id="skills" className="skills" ref={sectionRef}>
+    <section id="skills" className="skills">
       <h2>Skills</h2>
-      <div className="skills-grid">
-        {skills.map((skill, index) => (
-          <div key={index} className="skill">
-            <img src={`${process.env.PUBLIC_URL}/icons/${skill.toLowerCase()}.png`} alt={skill} />
-
-
-
-            
-            <p>{skill}</p>
-          </div>
-        ))}
+      <div className="parallax-wrapper">
+        <div className="parallax-track" ref={trackRef}>
+          {loopedSkills.map((skill, index) => (
+            <div key={index} className="parallax-item">
+              <img
+                src={`${process.env.PUBLIC_URL}/icons/${skill.toLowerCase()}.png`}
+                alt={skill}
+              />
+              <p>{skill}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
