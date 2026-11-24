@@ -1,58 +1,52 @@
-import React, { useEffect, useRef } from "react";
-import "./Skills.css";
+import React from 'react';
+import './Skills.css';
+
+const groups = [
+  {
+    title: 'DevOps & Cloud',
+    cmd: 'ops',
+    items: ['AWS', 'Kubernetes', 'Docker', 'Argo', 'Jenkins', 'CI/CD', 'Linux'],
+  },
+  {
+    title: 'Streaming & Observability',
+    cmd: 'obs',
+    items: ['Kafka', 'Grafana', 'Monitoring', 'Alerting'],
+  },
+  {
+    title: 'Systems',
+    cmd: 'sys',
+    items: ['Distributed Systems', 'Concurrency', 'HPC Clusters'],
+  },
+  {
+    title: 'Development',
+    cmd: 'dev',
+    items: ['Java', 'Spring Boot', 'TypeScript', 'React', 'HTML', 'CSS'],
+  },
+];
 
 const Skills: React.FC = () => {
-  const trackRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    let animationFrame: number;
-    let position = 0;
-
-    const speed = 0.5; // ajuste a velocidade do efeito parallax
-
-    const animate = () => {
-      if (trackRef.current) {
-        position -= speed;
-        trackRef.current.style.transform = `translateX(${position}px)`;
-
-        // reinicia quando sai da tela (efeito looping)
-        if (Math.abs(position) > trackRef.current.scrollWidth / 2) {
-          position = 0;
-        }
-      }
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
-
-  const skills = [
-    "Java",
-    "Spring Boot",
-    "HTML",
-    "CSS",
-    "React",
-    "Docker",
-    "Typescript",
-  ];
-
-  // duplicar itens para efeito infinito
-  const loopedSkills = [...skills, ...skills];
-
   return (
-    <section id="skills" className="skills">
-      <h2>Skills</h2>
-      <div className="parallax-wrapper">
-        <div className="parallax-track" ref={trackRef}>
-          {loopedSkills.map((skill, index) => (
-            <div key={index} className="parallax-item">
-              <img
-                src={`${process.env.PUBLIC_URL}/icons/${skill.toLowerCase()}.png`}
-                alt={skill}
-              />
-              <p>{skill}</p>
+    <section id="skills" className="section">
+      <div className="container">
+        <div className="section-head reveal">
+          <span className="section-index">03</span>
+          <h2 className="section-title">Skills</h2>
+        </div>
+
+        <div className="skill-grid">
+          {groups.map((g) => (
+            <div key={g.title} className="skill-card reveal">
+              <p className="skill-cmd mono">
+                <span>$</span> ls ./{g.cmd}
+              </p>
+              <h3>{g.title}</h3>
+              <ul>
+                {g.items.map((i) => (
+                  <li key={i} className="chip">
+                    {i}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

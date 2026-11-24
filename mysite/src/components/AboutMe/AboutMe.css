@@ -1,65 +1,104 @@
-/* Estilo Responsivo para a Seção */
-.about-me {
-  background: #313336;
-  color: white;
-  padding: 2rem;
-  text-align: center;
-  height: auto;
-  width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
-  left: 0; /* Garante que a seção começa do lado esquerdo */
-  right: 0; /* Garante que a seção termina no lado direito */
-  margin: 0; /* Remove margens que podem causar problemas */
-  font-size: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra leve para destaque */
-  border-radius: 8px; /* Bordas arredondadas */
-  overflow: hidden; /* Garante que nada ultrapasse os limites */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: start;
 }
 
-/* Título */
-.about-me h2 {
-  font-size: 2rem; /* Ajusta o tamanho do título */
-  margin-bottom: 1rem;
-  color: #f2f2f2;
+.about-text p {
+  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+  color: var(--text-dim);
+  margin-bottom: 20px;
 }
 
-/* Texto */
-.about-me p {
-  font-size: 1.25rem; /* Reduz um pouco o tamanho do texto */
-  line-height: 1.8; /* Melhora a legibilidade */
-  margin-bottom: 1rem;
+.about-text p:first-child {
+  color: var(--text);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .about-me {
-    padding: 1.5rem; /* Reduz o padding em telas médias */
-    font-size: 0.9rem; /* Ajusta o tamanho do texto base */
-    width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
-  }
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 36px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
 
-  .about-me h2 {
-    font-size: 1.8rem; /* Reduz o tamanho do título */
-  }
+.about-stats > div {
+  background: var(--bg);
+  padding: 18px 16px;
+}
 
-  .about-me p {
-    font-size: 1.1rem; /* Ajusta o texto em telas menores */
-    line-height: 1.6;
+.about-stats dt {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.about-stats dd {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.edu-list {
+  list-style: none;
+  border-left: 1px solid var(--line-strong);
+  padding-left: 28px;
+  display: grid;
+  gap: 36px;
+}
+
+.edu-item {
+  position: relative;
+}
+
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.edu-period {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+.edu-item h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 4px 0 2px;
+}
+
+.edu-place {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.edu-note {
+  color: var(--text-faint);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .about-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .about-me {
-    padding: 1rem; /* Reduz ainda mais o padding para telas pequenas */
-    font-size: 0.8rem; /* Fonte base menor em dispositivos muito pequenos */
-    width: 100vw; /* Garante que a seção ocupe 100% da largura da tela */
-  }
-
-  .about-me h2 {
-    font-size: 1.5rem; /* Título menor em telas pequenas */
-  }
-
-  .about-me p {
-    font-size: 1rem; /* Ajusta o texto para ficar proporcional */
-    line-height: 1.4; /* Compacta o espaçamento entre linhas */
+  .about-stats {
+    grid-template-columns: 1fr;
   }
 }

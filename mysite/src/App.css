@@ -1,84 +1,118 @@
-/* Global Styles */
 .app {
-  font-family: 'Arial', sans-serif;
-  background-color: #313336;
-  color: white;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  min-height: 100vh; /* Troca de height para min-height */
-  display: flex; /* Flexbox para estrutura responsiva */
-  flex-direction: column; /* Alinha os itens na vertical */
-  justify-content: flex-start; /* Alinha o conteúdo no topo */
-  align-items: center; /* Centraliza horizontalmente */
-  overflow-x: hidden; /* Remove a rolagem horizontal */
+  position: relative;
+  min-height: 100vh;
 }
 
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* subtle grid backdrop */
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 70% 0%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 70% 0%, #000 0%, transparent 70%);
+  opacity: 0.55;
+  pointer-events: none;
 }
 
-/* Sections */
-section {
-  padding: 2rem 1rem;
+.container {
+  width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
-  max-width: 1200px; /* Define uma largura máxima */
-  width: 100%; /* Preenche a largura da tela */
-  text-align: center;
-  height: auto; /* Deixa a altura ajustável conforme o conteúdo */
+  padding: 0 var(--gutter);
 }
 
-/* Imagens Responsivas */
-img {
-  max-width: 100%;
-  height: auto; /* Mantém a proporção da imagem */
-  display: block; /* Remove espaçamento extra em imagens inline */
-  margin: 0 auto; /* Centraliza imagens */
+.section {
+  padding: clamp(64px, 10vw, 120px) 0;
+  border-top: 1px solid var(--line);
 }
 
-/* Botões */
-button {
-  font-size: 1rem;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #555;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: clamp(32px, 5vw, 56px);
 }
 
-button:hover {
-  background-color: #777;
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
 }
 
-/* Responsividade Global */
-@media (max-width: 768px) {
-  .app {
-    flex-direction: column; /* Em telas pequenas, o layout fica em coluna */
-    padding: 1rem; /* Adiciona espaçamento interno */
-  }
-
-  section {
-    padding: 1rem; /* Reduz o padding em telas menores */
-  }
-
-  button {
-    width: 100%; /* Botões ocupam toda a largura em telas pequenas */
-    padding: 1rem; /* Ajusta o tamanho do botão */
-  }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-/* Ajustes Extras para Telas Muito Pequenas */
-@media (max-width: 480px) {
-  body {
-    font-size: 0.9rem; /* Reduz o tamanho da fonte em telas muito pequenas */
-  }
+.mono {
+  font-family: var(--font-mono);
+}
 
-  section {
-    padding: 0.5rem; /* Ajusta ainda mais o padding */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  border-color: var(--text-dim);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #e4ff7a;
+  border-color: #e4ff7a;
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+  background: var(--bg-raised);
+  white-space: nowrap;
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

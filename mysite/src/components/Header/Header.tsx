@@ -1,27 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 
-const Header: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
+];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+const Header: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="header">
-      <div className="logo">{`</>`}</div>
-      {/* Ícone do menu mobile */}
-      <div className="menu-icon" onClick={toggleMobileMenu}>
-        {isMobileMenuOpen ? '✖' : '☰'}
+    <header className={`header ${scrolled || open ? 'is-scrolled' : ''}`}>
+      <div className="container header-inner">
+        <a href="#introduction" className="logo" onClick={() => setOpen(false)}>
+          <span className="logo-prompt">~/</span>emerique
+          <span className="logo-cursor" aria-hidden="true" />
+        </a>
+
+        <button
+          className="menu-toggle"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span />
+          <span />
+        </button>
+
+        <nav className={`nav ${open ? 'is-open' : ''}`}>
+          {links.map((l, i) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              <span className="nav-index">0{i + 1}</span>
+              {l.label}
+            </a>
+          ))}
+        </nav>
       </div>
-      <nav className={`nav ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
-        <a href="#introduction" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-        <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About Me</a>
-        <a href="#scientific" onClick={() => setIsMobileMenuOpen(false)}>Scientific Initiation</a>
-        <a href="#skills" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
-        <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-      </nav>
     </header>
   );
 };
