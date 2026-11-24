@@ -17,8 +17,8 @@ const Introduction: React.FC = () => {
           </h1>
 
           <p className="hero-lead">
-            I build and operate reliable infrastructure for the financial market —
-            AWS, Kubernetes and Docker on Linux, GitOps with Argo, CI/CD with Jenkins,
+            DevOps engineer with experience building and operating reliable
+            infrastructure for the financial market — AWS, Kubernetes and Docker on Linux, GitOps with Argo, CI/CD with Jenkins,
             Kafka and Grafana observability
             for systems where uptime and auditability are not optional. Master’s
             student in Distributed Systems at USP / ICMC.

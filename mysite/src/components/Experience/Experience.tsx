@@ -6,6 +6,7 @@ type Job = {
   role: string;
   org: string;
   tag?: string;
+  featured?: boolean;
   summary: string;
   bullets: string[];
   stack: string[];
@@ -14,19 +15,19 @@ type Job = {
 // Edit company names, dates and details here.
 const jobs: Job[] = [
   {
-    period: 'Present',
+    period: 'Financial sector',
     role: 'DevOps Engineer',
     org: 'Financial Market',
-    tag: 'Current',
+    featured: true,
     summary:
       'Platform and delivery automation for financial services, in a regulated environment where availability, security and traceability are mandatory.',
     bullets: [
-      'Operate containerized workloads on Kubernetes in AWS, keeping services highly available and scaling with market demand.',
-      'Deliver releases through GitOps with Argo, so every change to production is declarative, versioned and auditable.',
-      'Build and maintain CI/CD pipelines in Jenkins with automated tests, security checks and controlled rollouts of Docker images.',
-      'Administer Linux servers and environments that run the platform, from troubleshooting to hardening.',
-      'Support event-driven systems built on Kafka, handling high-throughput message streams between financial services.',
-      'Monitor platform health with Grafana dashboards and alerts to detect issues early and speed up incident response.',
+      'Containerized workloads on Kubernetes in AWS, keeping services highly available and scaling with market demand.',
+      'Releases delivered through GitOps with Argo, so every change to production is declarative, versioned and auditable.',
+      'CI/CD pipelines in Jenkins with automated tests, security checks and controlled rollouts of Docker images.',
+      'Administration of the Linux servers and environments that run the platform, from troubleshooting to hardening.',
+      'Event-driven systems built on Kafka, handling high-throughput message streams between financial services.',
+      'Platform health monitoring with Grafana dashboards and alerts, for early detection and faster incident response.',
     ],
     stack: ['AWS', 'Kubernetes', 'Docker', 'Argo', 'Jenkins', 'CI/CD', 'Kafka', 'Grafana', 'Linux'],
   },
@@ -67,7 +68,7 @@ const Experience: React.FC = () => {
           {jobs.map((job) => (
             <article
               key={job.role + job.org}
-              className={`job reveal ${job.tag ? 'job--featured' : ''}`}
+              className={`job reveal ${job.featured ? 'job--featured' : ''}`}
             >
               <div className="job-meta">
                 <span className="job-period mono">{job.period}</span>

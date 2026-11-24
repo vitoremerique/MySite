@@ -17,7 +17,7 @@ const education = [
 ];
 
 const highlights = [
-  { value: 'DevOps', label: 'in the financial market' },
+  { value: 'DevOps', label: 'experience in the financial market' },
   { value: 'M.Sc.', label: 'Distributed Systems · USP' },
   { value: '4 yrs', label: 'of research (2021 — 2024)' },
 ];
@@ -34,13 +34,14 @@ const AboutMe: React.FC = () => {
         <div className="about-grid">
           <div className="about-text reveal">
             <p>
-              I’m an engineer working where infrastructure meets reliability. In
-              the financial market, I automate delivery and operate platforms that
-              must stay fast, secure and auditable under real traffic.
+              I’m an engineer focused on where infrastructure meets reliability.
+              My DevOps background comes from the financial market: automating
+              delivery and operating platforms that must stay fast, secure and
+              auditable under real traffic.
             </p>
             <p>
-              In parallel, I research distributed systems at USP, which keeps my
-              day-to-day DevOps work grounded in how systems actually behave at
+              I also research distributed systems at USP, which keeps my DevOps
+              work grounded in how systems actually behave at
               scale — concurrency, fault tolerance and performance.
             </p>
 
